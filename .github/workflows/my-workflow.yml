@@ -29,8 +29,8 @@ jobs:
       run: echo Hello, world!
 
     # Runs pypy version
-    - name: Run a one-line script
-      run: pypy --version
+    - name: Run pypy3 version
+      run: pypy3 --version
 
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
