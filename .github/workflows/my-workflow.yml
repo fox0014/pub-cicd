@@ -2,7 +2,7 @@
 
 name: GitHub Actions CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
+# Controls when the actions will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
@@ -17,6 +17,7 @@ jobs:
     name: My Build
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    container: pypy:3-7.3.0
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,6 +27,10 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: echo Hello, world!
+
+    # Runs pypy version
+    - name: Run a one-line script
+      run: pypy --version
 
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
