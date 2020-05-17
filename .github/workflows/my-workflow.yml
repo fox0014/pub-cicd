@@ -9,6 +9,11 @@ on:
     branches: [ master ]
 #  pull_request:
 #    branches: [ master ]
+    paths-ignore:
+    - 'README.md'
+  schedule:
+    # cron job
+    - cron:  '0 11 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,6 +39,11 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
+      # 指定超时分钟数（Default: 360）
+      # 每个Job最大时长是默认的360分钟，超过后会被触发取消操作，而不是超时操作，所以最好设置一个超时时间触发超时
+      timeout-minutes: 300
+      # 即使步骤出错也继续运行
+      continue-on-error: true    
       env:
         MY_VAR: "Hi there! My name is"
         FIRST_NAME: "Mona"
